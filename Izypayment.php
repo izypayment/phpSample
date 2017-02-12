@@ -1,8 +1,10 @@
 <?php
 
-class Izypayment {
+class Izypayment
+{
     protected $key;
-    const END_POINT = 'http://localhost:8000/api/v1';
+    //const END_POINT = 'https://www.izypayment.com/api/v1';
+    const END_POINT = 'http://pay.dev/api/v1';
 
     public function __construct($key) {
         $this->key = $key;
@@ -15,20 +17,9 @@ class Izypayment {
     *
     */
     public function pay($params = []) {
-        $paymentUrl = self::END_POINT . '/pay';
-        $data = [];
-        $data = $this->apiCurl($url, $params);
-
+        $data = $this->apiCurl('/pay', $params);
         $response_json = (array)json_decode($data['response'], true);
-        $response = $response_json['content'];
-        $statusCode = $response_json['statusCode'];
-
-        if ($statusCode != 1) {
-            $error = $response_json['content']
-            /**
-             * TODO when error in the transaction
-             */
-        }
+        return $response_json;
     }
 
 
@@ -41,6 +32,7 @@ class Izypayment {
      */
     private function apiCurl($url, $params)
     {
+        $url = self::END_POINT . $url;
         $curl = curl_init();
 
         $curl_params = array(
@@ -71,5 +63,6 @@ class Izypayment {
             return $data;
         }
     }
+}
 
 ?>
