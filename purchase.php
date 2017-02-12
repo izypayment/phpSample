@@ -2,7 +2,7 @@
 require_once('Izypayment.php');
 
 $secret = $_POST['secret'];
-$key = '7ZYE@HLw@uWeW3ZoFlE0eshU02uLx30sQNYQkzbjTYnEQbTlnmarFhcu@y7xpXP6';
+$key = 'your-application-key';
 
 $izypayment = new Izypayment($key);
 $response = $izypayment->pay([
