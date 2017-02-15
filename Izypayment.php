@@ -12,7 +12,7 @@ class Izypayment
     /**
     * Make a payment
     *
-    * @param $params array of POST parameters
+    * @param array $params payment details
     *
     * $params = [
     *     'secret' => 'secret' //String
