@@ -3,8 +3,7 @@
 class Izypayment
 {
     protected $key;
-    //const END_POINT = 'https://www.izypayment.com/api/v1';
-    const END_POINT = 'http://pay.dev/api/v1';
+    const END_POINT = 'https://www.izypayment.com/api/v1';
 
     public function __construct($key) {
         $this->key = $key;
@@ -15,6 +14,12 @@ class Izypayment
     *
     * @param $params array of POST parameters
     *
+    * $params = [
+    *     'secret' => 'secret' //String
+    *     'amount' => 500, //Int
+    *     'description' => 'Enter description here',
+    *     'lang'   => 'en' //en/fr
+    * ];
     */
     public function pay($params = []) {
         $data = $this->apiCurl('/pay', $params);
